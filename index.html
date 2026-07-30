@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Nuestro Universo ❤️</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       PANTALLA 1 · BIENVENIDA
+  ============================================================ -->
+  <section id="screen-welcome" class="screen">
+    <div class="stars-bg"></div>
+    <div class="welcome-content">
+      <div class="glow-heart" id="glowHeart">
+        <svg viewBox="0 0 32 29" class="heart-svg">
+          <path d="M16 28.5 C16 28.5 1 18.7 1 8.9 C1 3.9 4.9 0.5 9.2 0.5 C12.1 0.5 14.6 2.1 16 4.6 C17.4 2.1 19.9 0.5 22.8 0.5 C27.1 0.5 31 3.9 31 8.9 C31 18.7 16 28.5 16 28.5 Z"/>
+        </svg>
+      </div>
+      <h1 class="welcome-title" id="welcomeTitle">Feliz Día de la Novia <span class="heart-inline">❤</span></h1>
+      <button id="enterBtn" class="btn-enter">
+        <span>Entrar a Nuestro Universo</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANTALLA 2 · CARGA
+  ============================================================ -->
+  <section id="screen-loading" class="screen hidden">
+    <div class="loading-content">
+      <h2 class="loading-title">Preparando todo…</h2>
+      <p class="loading-sub">Cargando estrellas y recuerdos…</p>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <p class="loading-msg" id="loadingMsg">✨ Creando galaxias…</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       UNIVERSO PRINCIPAL (Three.js canvas)
+  ============================================================ -->
+  <section id="screen-universe" class="screen hidden">
+    <canvas id="universeCanvas"></canvas>
+
+    <!-- Palabras flotantes (constelaciones de texto) -->
+    <div id="floatingWords"></div>
+
+    <!-- Corazón secreto -->
+    <div id="secretHeart" class="secret-heart" title=""></div>
+
+    <!-- UI superior -->
+    <header class="hud">
+      <div class="hud-left">
+        <button id="btnFullscreen" class="hud-btn" aria-label="Pantalla completa">⛶</button>
+        <button id="btnRestart" class="hud-btn" aria-label="Reiniciar">↺</button>
+        <button id="btnShare" class="hud-btn" aria-label="Compartir">⤴</button>
+      </div>
+      <div class="hud-center" id="liveCounter">
+        <span class="counter-label">Llevamos juntos</span>
+        <div class="counter-values">
+          <div class="counter-unit"><span id="cDays">0</span><small>días</small></div>
+          <div class="counter-unit"><span id="cHours">0</span><small>hrs</small></div>
+          <div class="counter-unit"><span id="cMin">0</span><small>min</small></div>
+          <div class="counter-unit"><span id="cSec">0</span><small>seg</small></div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <button id="btnMusic" class="hud-btn" aria-label="Música">♫</button>
+      </div>
+    </header>
+
+    <!-- Panel de música -->
+    <div id="musicPanel" class="music-panel hidden">
+      <span class="music-title" id="musicTitle">Nuestra canción</span>
+      <div class="music-controls">
+        <button id="btnPlayPause" class="music-btn">▶</button>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" class="volume-slider" />
+        <button id="btnMute" class="music-btn">🔊</button>
+      </div>
+    </div>
+
+    <!-- Navegación de secciones -->
+    <nav class="section-nav">
+      <button class="nav-btn active" data-section="universe">Universo</button>
+      <button class="nav-btn" data-section="timeline">Línea de Tiempo</button>
+      <button class="nav-btn" data-section="gallery">Galería</button>
+    </nav>
+
+    <!-- Indicador scroll -->
+    <div class="scroll-hint">Toca un planeta ✦ desliza para explorar</div>
+  </section>
+
+  <!-- ============================================================
+       MODAL DE RECUERDO (planeta)
+  ============================================================ -->
+  <div id="memoryModal" class="modal-overlay hidden">
+    <div class="modal-card glass">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-photo" id="modalPhoto"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <span class="modal-date" id="modalDate"></span>
+      <p class="modal-desc" id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       LÍNEA DE TIEMPO
+  ============================================================ -->
+  <section id="screen-timeline" class="screen hidden overlay-screen">
+    <button class="back-btn" data-back="universe">← Volver al Universo</button>
+    <h2 class="section-title">Nuestra Línea del Tiempo</h2>
+    <div class="timeline-wrap" id="timelineWrap"></div>
+  </section>
+
+  <!-- ============================================================
+       GALERÍA
+  ============================================================ -->
+  <section id="screen-gallery" class="screen hidden overlay-screen">
+    <button class="back-btn" data-back="universe">← Volver al Universo</button>
+    <h2 class="section-title">Galería de Recuerdos</h2>
+    <div class="gallery-wrap" id="galleryWrap"></div>
+  </section>
+
+  <!-- Lightbox de galería -->
+  <div id="lightbox" class="lightbox hidden">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- ============================================================
+       CARTA ROMÁNTICA (sorpresa secreta)
+  ============================================================ -->
+  <div id="letterOverlay" class="letter-overlay hidden">
+    <div class="letter-card glass">
+      <h3 class="letter-title" id="letterTitle">Para ti</h3>
+      <p class="letter-text" id="letterText"></p>
+      <span class="letter-cursor" id="letterCursor">|</span>
+      <button class="letter-close hidden" id="letterCloseBtn">Cerrar con amor</button>
+    </div>
+    <div id="petalsContainer"></div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <!-- ============================================================
+       LIBRERÍAS EXTERNAS
+  ============================================================ -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- ============================================================
+       MÓDULOS PROPIOS
+  ============================================================ -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/textures.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
