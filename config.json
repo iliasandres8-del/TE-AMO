@@ -1,0 +1,57 @@
+{
+  "pareja": {
+    "nombreEllas": "Mi Amor",
+    "tituloBienvenida": "Feliz Día de la Novia",
+    "fechaInicio": "2023-02-14T00:00:00",
+    "fotoPrincipal": ""
+  },
+
+  "musica": {
+    "src": "assets/audio/musica.mp3",
+    "titulo": "Nuestra canción",
+    "autoplay": true,
+    "volumenInicial": 0.5
+  },
+
+  "planetas": [
+    { "id": 1, "nombre": "Nuestro Primer Mensaje", "fecha": "14 Feb 2023", "descripcion": "Ese día todo cambió. Un simple mensaje y empezó nuestra historia.", "foto": "", "color": "#8a5cff" },
+    { "id": 2, "nombre": "Nuestra Primera Llamada", "fecha": "20 Feb 2023", "descripcion": "Hablamos hasta quedarnos sin batería y sin ganas de colgar.", "foto": "", "color": "#3fd1ff" },
+    { "id": 3, "nombre": "Nuestra Primera Cita", "fecha": "3 Mar 2023", "descripcion": "Los nervios, las risas, y la certeza de que quería más citas contigo.", "foto": "", "color": "#ff5cb3" },
+    { "id": 4, "nombre": "Nuestro Primer Beso", "fecha": "10 Mar 2023", "descripcion": "Aquel día entendí que quería compartir mi vida contigo.", "foto": "", "color": "#ff8a5c" },
+    { "id": 5, "nombre": "Te Hice Mi Novia", "fecha": "1 Abr 2023", "descripcion": "El día que te pedí ser mi persona favorita para siempre.", "foto": "", "color": "#5cffb0" },
+    { "id": 6, "nombre": "Nuestro Primer Viaje", "fecha": "15 Jun 2023", "descripcion": "Descubrimos el mundo juntos, un lugar nuevo a la vez.", "foto": "", "color": "#c65cff" },
+    { "id": 7, "nombre": "Una Noche Inolvidable", "fecha": "20 Ago 2023", "descripcion": "De esas noches que se quedan guardadas para siempre.", "foto": "", "color": "#ffd35c" },
+    { "id": 8, "nombre": "Nuestro Primer Aniversario", "fecha": "14 Feb 2024", "descripcion": "Un año juntos y se sintió como si fuera el primer día.", "foto": "", "color": "#5cc9ff" },
+    { "id": 9, "nombre": "Nuestra Foto Favorita", "fecha": "5 May 2024", "descripcion": "Ese momento exacto que quisimos congelar para siempre.", "foto": "", "color": "#ff5c8a" },
+    { "id": 10, "nombre": "Hoy, Contigo", "fecha": "Hoy", "descripcion": "Cada día elijo seguir construyendo este universo a tu lado.", "foto": "", "color": "#9dff5c" }
+  ],
+
+  "palabras": [
+    "Te Amo", "Mi Paraíso", "Mi Universo", "Siempre Juntos", "Destino",
+    "Nuestra Historia", "Eres Mi Todo", "Mi Lugar Favorito", "Mi Felicidad",
+    "Mi Persona Favorita", "Amor Eterno", "Siempre Tú", "Gracias por Existir"
+  ],
+
+  "timeline": [
+    { "titulo": "Primera Conversación", "fecha": "14 Feb 2023", "descripcion": "Todo empezó con un simple 'hola'.", "foto": "" },
+    { "titulo": "Primera Salida", "fecha": "3 Mar 2023", "descripcion": "Nervios, risas y muchas ganas de volver a vernos.", "foto": "" },
+    { "titulo": "Primer Beso", "fecha": "10 Mar 2023", "descripcion": "El momento que lo confirmó todo.", "foto": "" },
+    { "titulo": "Primer Viaje", "fecha": "15 Jun 2023", "descripcion": "Nuevos lugares, la misma persona favorita.", "foto": "" },
+    { "titulo": "Primera Foto Juntos", "fecha": "20 Mar 2023", "descripcion": "El recuerdo que nunca vamos a borrar.", "foto": "" },
+    { "titulo": "Primer Aniversario", "fecha": "14 Feb 2024", "descripcion": "Un año de nosotros, para toda una vida.", "foto": "" }
+  ],
+
+  "galeria": [
+    { "foto": "", "titulo": "Un recuerdo bonito" },
+    { "foto": "", "titulo": "Otro momento nuestro" },
+    { "foto": "", "titulo": "Ese día especial" },
+    { "foto": "", "titulo": "Riendo juntos" },
+    { "foto": "", "titulo": "Nuestro viaje" },
+    { "foto": "", "titulo": "Mi lugar favorito: contigo" }
+  ],
+
+  "carta": {
+    "titulo": "Para ti, mi amor",
+    "texto": "Si estás leyendo esto es porque encontraste el corazón escondido en nuestro universo, tal como encontraste un lugar en mi vida sin que lo estuviera buscando. Quiero que sepas que cada estrella de esta galaxia representa un recuerdo contigo, y aún así, no alcanzan para contener todo lo que siento. Gracias por elegirme cada día, por reír conmigo, por construir este universo a mi lado. Te amo hoy, mañana y en todos los universos posibles."
+  }
+}
