@@ -13,12 +13,8 @@ const UI = (() => {
   function init(cfg) {
     config = cfg;
     setupModal();
-    setupTimeline();
-    setupGallery();
-    setupLightbox();
     setupMusic();
     setupHud();
-    setupSectionNav();
     setupFloatingWords();
     setupSecretHeart();
     setupLetter();
@@ -54,54 +50,6 @@ const UI = (() => {
       scale: 0.9, opacity: 0, y: 20, duration: 0.3, ease: 'power2.in',
       onComplete: () => modal.classList.add('hidden')
     });
-  }
-
-  /* ------------------------------- TIMELINE ------------------------------- */
-  function setupTimeline() {
-    const wrap = document.getElementById('timelineWrap');
-    (config.timeline || []).forEach((item) => {
-      const div = document.createElement('div');
-      div.className = 'timeline-item';
-      const src = (item.foto && item.foto.trim()) ? item.foto : TextureFactory.photoPlaceholder(item.titulo, 400, 225);
-      div.innerHTML = `
-        <div class="timeline-photo" style="background-image:url(${src})"></div>
-        <h4>${escapeHtml(item.titulo)}</h4>
-        <span class="t-date">${escapeHtml(item.fecha)}</span>
-        <p>${escapeHtml(item.descripcion)}</p>
-      `;
-      wrap.appendChild(div);
-    });
-  }
-  function animateTimelineIn() {
-    const items = document.querySelectorAll('.timeline-item');
-    gsap.to(items, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out' });
-  }
-
-  /* -------------------------------- GALERÍA -------------------------------- */
-  function setupGallery() {
-    const wrap = document.getElementById('galleryWrap');
-    (config.galeria || []).forEach((item) => {
-      const div = document.createElement('div');
-      div.className = 'gallery-item';
-      const src = (item.foto && item.foto.trim()) ? item.foto : TextureFactory.photoPlaceholder(item.titulo, 400, 400);
-      div.style.backgroundImage = `url(${src})`;
-      div.innerHTML = `<span>${escapeHtml(item.titulo || '')}</span>`;
-      div.addEventListener('click', () => openLightbox(src));
-      wrap.appendChild(div);
-    });
-  }
-  function setupLightbox() {
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    document.getElementById('lightbox').addEventListener('click', (e) => {
-      if (e.target.id === 'lightbox') closeLightbox();
-    });
-  }
-  function openLightbox(src) {
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.remove('hidden');
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.add('hidden');
   }
 
   /* ------------------------------- MÚSICA ------------------------------- */
@@ -182,43 +130,20 @@ const UI = (() => {
     });
   }
 
-  /* --------------------------- NAVEGACIÓN DE SECCIONES --------------------------- */
-  function setupSectionNav() {
-    const navBtns = document.querySelectorAll('.nav-btn');
-    navBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.section;
-        navBtns.forEach(b => b.classList.toggle('active', b === btn));
-        goToSection(target);
-      });
-    });
-    document.querySelectorAll('[data-back]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        goToSection('universe');
-        navBtns.forEach(b => b.classList.toggle('active', b.dataset.section === 'universe'));
-      });
-    });
-  }
-  function goToSection(name) {
-    document.getElementById('screen-universe').classList.toggle('hidden', name !== 'universe');
-    document.getElementById('screen-timeline').classList.toggle('hidden', name !== 'timeline');
-    document.getElementById('screen-gallery').classList.toggle('hidden', name !== 'gallery');
-    if (name === 'timeline') animateTimelineIn();
-  }
-
   /* ---------------------------- PALABRAS FLOTANTES ---------------------------- */
   function setupFloatingWords() {
     const container = document.getElementById('floatingWords');
     const words = config.palabras || [];
+    const colorClasses = ['word-pink', 'word-purple', 'word-cyan'];
     words.forEach((word, i) => {
       const el = document.createElement('div');
-      el.className = 'floating-word';
+      el.className = 'floating-word ' + colorClasses[i % colorClasses.length];
       el.textContent = word;
       const startX = Math.random()*90 + 2;
       const startY = Math.random()*85 + 5;
       el.style.left = startX + '%';
       el.style.top = startY + '%';
-      el.style.opacity = (0.25 + Math.random()*0.4).toFixed(2);
+      el.style.opacity = (0.35 + Math.random()*0.4).toFixed(2);
       container.appendChild(el);
 
       const duration = 14 + Math.random()*10;
@@ -362,3 +287,4 @@ const UI = (() => {
 
   return { init, openModal };
 })();
+
