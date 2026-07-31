@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Nuestro Universo ❤️</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -84,13 +84,6 @@
       </div>
     </div>
 
-    <!-- Navegación de secciones -->
-    <nav class="section-nav">
-      <button class="nav-btn active" data-section="universe">Universo</button>
-      <button class="nav-btn" data-section="timeline">Línea de Tiempo</button>
-      <button class="nav-btn" data-section="gallery">Galería</button>
-    </nav>
-
     <!-- Indicador scroll -->
     <div class="scroll-hint">Toca un planeta ✦ desliza para explorar</div>
   </section>
@@ -106,30 +99,6 @@
       <span class="modal-date" id="modalDate"></span>
       <p class="modal-desc" id="modalDesc"></p>
     </div>
-  </div>
-
-  <!-- ============================================================
-       LÍNEA DE TIEMPO
-  ============================================================ -->
-  <section id="screen-timeline" class="screen hidden overlay-screen">
-    <button class="back-btn" data-back="universe">← Volver al Universo</button>
-    <h2 class="section-title">Nuestra Línea del Tiempo</h2>
-    <div class="timeline-wrap" id="timelineWrap"></div>
-  </section>
-
-  <!-- ============================================================
-       GALERÍA
-  ============================================================ -->
-  <section id="screen-gallery" class="screen hidden overlay-screen">
-    <button class="back-btn" data-back="universe">← Volver al Universo</button>
-    <h2 class="section-title">Galería de Recuerdos</h2>
-    <div class="gallery-wrap" id="galleryWrap"></div>
-  </section>
-
-  <!-- Lightbox de galería -->
-  <div id="lightbox" class="lightbox hidden">
-    <button class="lightbox-close" id="lightboxClose">✕</button>
-    <img id="lightboxImg" class="lightbox-img" src="" alt="" />
   </div>
 
   <!-- ============================================================
@@ -157,10 +126,10 @@
   <!-- ============================================================
        MÓDULOS PROPIOS
   ============================================================ -->
-  <script src="audio-fx.js"></script>
-  <script src="textures.js"></script>
-  <script src="scene.js"></script>
-  <script src="ui.js"></script>
-  <script src="main.js"></script>
+  <script src="js/audio-fx.js"></script>
+  <script src="js/textures.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
