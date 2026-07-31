@@ -9,6 +9,7 @@ const UniverseScene = (() => {
 
   let scene, camera, renderer, clock;
   let starfield, galaxyPoints, nebulaMesh;
+  let blackHoleGroup;
   let centralPhotoGroup, centralOrbitRing;
   let planetGroup = [];
   let comets = [];
@@ -44,6 +45,7 @@ const UniverseScene = (() => {
     buildStarfield();
     buildNebula();
     buildGalaxy();
+    buildBlackHole();
     buildCentralPhoto();
     buildPlanets();
 
@@ -162,6 +164,50 @@ const UniverseScene = (() => {
     galaxyPoints = new THREE.Points(geo, mat);
     galaxyPoints.rotation.x = 0.35;
     scene.add(galaxyPoints);
+  }
+
+  /* ------------------------------ AGUJERO NEGRO ------------------------------ */
+  function buildBlackHole() {
+    blackHoleGroup = new THREE.Group();
+
+    // Disco negro central (el "vacío")
+    const coreGeo = new THREE.CircleGeometry(3.6, 64);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    blackHoleGroup.add(core);
+
+    // Disco de acreción: varios anillos de colores con textura radial generada por canvas
+    const ringTex = buildRadialGlowTexture();
+    const ringColors = ['#ff5cb3', '#8a5cff', '#3fd1ff'];
+    ringColors.forEach((color, i) => {
+      const ringGeo = new THREE.RingGeometry(3.7 + i*0.9, 3.7 + i*0.9 + 1.3, 96);
+      const ringMat = new THREE.MeshBasicMaterial({
+        color, map: ringTex, transparent: true, opacity: 0.5 - i*0.1,
+        blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide
+      });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.userData.spinSpeed = 0.06 - i*0.015;
+      blackHoleGroup.add(ring);
+    });
+
+    blackHoleGroup.rotation.x = Math.PI / 2.4;
+    blackHoleGroup.position.set(0, 0.5, 0);
+    scene.add(blackHoleGroup);
+  }
+
+  // Genera una textura radial suave reutilizable para discos/glows
+  function buildRadialGlowTexture() {
+    const size = 256;
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    grad.addColorStop(0, 'rgba(255,255,255,0.9)');
+    grad.addColorStop(0.6, 'rgba(255,255,255,0.35)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    return new THREE.CanvasTexture(canvas);
   }
 
   /* -------------------------- FOTO PRINCIPAL -------------------------- */
@@ -349,6 +395,11 @@ const UniverseScene = (() => {
     const t = clock.elapsedTime;
 
     if (galaxyPoints) galaxyPoints.rotation.y += dt * 0.02;
+    if (blackHoleGroup) {
+      blackHoleGroup.children.forEach(child => {
+        if (child.userData.spinSpeed) child.rotation.z += dt * child.userData.spinSpeed;
+      });
+    }
     if (starfield) starfield.rotation.y += dt * 0.001;
     if (nebulaMesh) nebulaMesh.rotation.y += dt * 0.003;
 
