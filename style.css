@@ -151,12 +151,13 @@ img{ -webkit-user-drag:none; user-select:none; }
   position:absolute;
   font-family:var(--font-display);
   font-style:italic;
-  color:rgba(255,255,255,.5);
-  text-shadow:0 0 10px rgba(138,92,255,.7);
   white-space:nowrap;
   pointer-events:none;
-  font-size:clamp(.75rem, 1.6vw, 1.1rem);
+  font-size:clamp(.8rem, 1.8vw, 1.25rem);
 }
+.word-pink{ color:#ffb3e0; text-shadow:0 0 12px var(--pink), 0 0 22px rgba(255,92,179,.6); }
+.word-purple{ color:#d6c2ff; text-shadow:0 0 12px var(--purple), 0 0 22px rgba(138,92,255,.6); }
+.word-cyan{ color:#bff5ff; text-shadow:0 0 12px var(--cyan), 0 0 22px rgba(92,255,232,.6); }
 
 /* Corazón secreto: pequeño, casi invisible */
 .secret-heart{
