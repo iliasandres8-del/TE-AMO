@@ -2,12 +2,12 @@
   "pareja": {
     "nombreEllas": "Mi Amor",
     "tituloBienvenida": "Feliz Día de la Novia",
-    "fechaInicio": "2023-02-14T00:00:00",
-    "fotoPrincipal": ""
+    "fechaInicio": "2026-06-29T00:00:00",
+    "fotoPrincipal": "nosotros.jpg"
   },
 
   "musica": {
-    "src": "assets/audio/musica.mp3",
+    "src": "musica.mp3",
     "titulo": "Nuestra canción",
     "autoplay": true,
     "volumenInicial": 0.5
@@ -30,24 +30,6 @@
     "Te Amo", "Mi Paraíso", "Mi Universo", "Siempre Juntos", "Destino",
     "Nuestra Historia", "Eres Mi Todo", "Mi Lugar Favorito", "Mi Felicidad",
     "Mi Persona Favorita", "Amor Eterno", "Siempre Tú", "Gracias por Existir"
-  ],
-
-  "timeline": [
-    { "titulo": "Primera Conversación", "fecha": "14 Feb 2023", "descripcion": "Todo empezó con un simple 'hola'.", "foto": "" },
-    { "titulo": "Primera Salida", "fecha": "3 Mar 2023", "descripcion": "Nervios, risas y muchas ganas de volver a vernos.", "foto": "" },
-    { "titulo": "Primer Beso", "fecha": "10 Mar 2023", "descripcion": "El momento que lo confirmó todo.", "foto": "" },
-    { "titulo": "Primer Viaje", "fecha": "15 Jun 2023", "descripcion": "Nuevos lugares, la misma persona favorita.", "foto": "" },
-    { "titulo": "Primera Foto Juntos", "fecha": "20 Mar 2023", "descripcion": "El recuerdo que nunca vamos a borrar.", "foto": "" },
-    { "titulo": "Primer Aniversario", "fecha": "14 Feb 2024", "descripcion": "Un año de nosotros, para toda una vida.", "foto": "" }
-  ],
-
-  "galeria": [
-    { "foto": "", "titulo": "Un recuerdo bonito" },
-    { "foto": "", "titulo": "Otro momento nuestro" },
-    { "foto": "", "titulo": "Ese día especial" },
-    { "foto": "", "titulo": "Riendo juntos" },
-    { "foto": "", "titulo": "Nuestro viaje" },
-    { "foto": "", "titulo": "Mi lugar favorito: contigo" }
   ],
 
   "carta": {
